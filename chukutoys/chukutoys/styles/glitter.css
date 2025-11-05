@@ -1,0 +1,11 @@
+/* styles/glitter.css */
+@keyframes glitter {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.glitter-bg {
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  background-size: 600% 600%;
+  animation: glitter 3s ease infinite;
+}
