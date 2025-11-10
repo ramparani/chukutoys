@@ -1,6 +1,5 @@
 "use client"
 
-
 import useSWR from "swr"
 import { use } from 'react';
 import Link from "next/link"
@@ -10,21 +9,49 @@ import { formatCurrencyINR } from "@/lib/utils"
 
 const fetcher = async (url: string) => {
   const res = await fetch(url, { cache: "no-store" })
-@@ -22,13 +27,45 @@ export default function ProductDetailsPage({
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    const message = err?.error || `Request failed: ${res.status}`
+    throw new Error(message)
+  }
+  return res.json()
+}
+
+export default function ProductDetailsPage({
+  params,
 }: {
   params: Promise<{ id: string }>
 }) {
-
   const { id } = use(params);
   const { data, error, isLoading } = useSWR<{ product: any }>(
     id ? `/api/products/${id}` : null,
     fetcher,
     { revalidateOnFocus: false },
   )
+
   // Loading state
   if (isLoading) {
     return (
-@@ -55,9 +92,6 @@ export default function ProductDetailsPage({
+      <main className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+        <p>Loading product…</p>
+      </main>
+    )
+  }
+
+  // Error / Not Found state
+  if (error || !data?.product) {
+    return (
+      <main className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+        <nav className="mb-6 text-sm">
+          <Link href="/products" className="text-primary hover:underline">
+            ← Back to products
+          </Link>
+        </nav>
+        <h1 className="text-pretty text-2xl font-semibold">Product not found</h1>
+        <p className="mt-2 text-muted-foreground">
+          We couldn't find that toy. It might have been removed or the link is incorrect.
+        </p>
+      </main>
     )
   }
 
@@ -34,12 +61,14 @@ const fetcher = async (url: string) => {
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 md:py-14">
       <nav className="mb-6 text-sm">
-@@ -68,26 +102,50 @@ export default function ProductDetailsPage({
+        <Link href="/products" className="text-primary hover:underline">
+          ← Back to products
+        </Link>
+      </nav>
 
       <section className="grid gap-6 md:grid-cols-2 md:gap-8">
         <div>
           <ProductGallery images={images} name={product.name} />
-
         </div>
 
         <div>
@@ -62,3 +91,5 @@ const fetcher = async (url: string) => {
         </div>
       </section>
     </main>
+  )
+}
