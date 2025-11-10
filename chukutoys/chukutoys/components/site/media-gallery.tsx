@@ -19,11 +19,14 @@ export function MediaGallery({ images, videos, name }: MediaGalleryProps) {
   // Combine images and videos into media items
   const mediaItems: MediaItem[] = [
     ...images.map((src) => ({ type: "image" as const, src })),
-    ...videos.map((src) => ({ type: "video" as const, src })),
+    ...(videos ? videos.map((src) => ({ type: "video" as const, src })) : []),
   ]
 
   const [selectedIndex, setSelectedIndex] = useState(0)
   const currentMedia = mediaItems[selectedIndex]
+
+  console.log("Source", currentMedia.src);
+  
 
   if (mediaItems.length === 0) {
     return (
@@ -50,7 +53,7 @@ export function MediaGallery({ images, videos, name }: MediaGalleryProps) {
           <iframe
             width="100%"
             height="100%"
-            src={`https://www.youtube.com/embed/${currentMedia.src}`}
+            src={currentMedia.src ? `https://www.youtube.com/embed/${currentMedia.src}` : "https://www.youtube.com/embed/VLL7-jOU7ok"}
             title={`${name} video ${selectedIndex + 1}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
