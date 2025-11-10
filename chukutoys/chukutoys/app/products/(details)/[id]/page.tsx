@@ -5,7 +5,8 @@ import useSWR from "swr"
 import { use } from 'react';
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import { ProductGallery } from "@/components/site/product-gallery"
+// import { ProductGallery } from "@/components/site/product-gallery"
+import { MediaGallery } from "@/components/site/media-gallery";
 import { formatCurrencyINR } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { addToCart } from "@/lib/cart"
@@ -42,7 +43,9 @@ export default function ProductDetailsPage({
   const images =
     product.product_images && product.product_images.length > 0
       ? product.product_images.map((img: { url: string }) => `${img.url}`)
-      : [];        
+      : [];
+  
+  const videos = [product.product_videos_YoutubeIDs];
       
   const handleAddToCart = () => {
     if (!product) return    
@@ -99,24 +102,25 @@ export default function ProductDetailsPage({
 
       <section className="grid gap-6 md:grid-cols-2 md:gap-8">
         <div>
-          <ProductGallery images={images} name={product.product_name} />
+          {/* <ProductGallery images={images} name={product.product_name} /> */}
+          <MediaGallery images={images} videos={videos} name={product.name} />
         </div>
 
         <div>
           <h1 className="text-pretty text-3xl font-semibold md:text-4xl">{product.product_name}</h1>
           <p className="mt-2 text-lg font-medium text-primary">{formatCurrencyINR(product.product_price)}</p>
-          <p className="mt-4 text-muted-foreground">{product.product_description}</p>
+          <p className="mt-4 text-black">{product.product_description}</p>
 
           <Card className="mt-6">
-            <CardContent className="pt-6">
+            <CardContent className="pt-2">
               <dl className="grid grid-cols-2 gap-3 text-sm">
-                <dt className="text-muted-foreground">Category</dt>
-                <dd>{product.product_category}</dd>
-                <dt className="text-muted-foreground">Age</dt>
+                {/* <dt className="text-black font-bold">Youtube video</dt>
+                <dd><a href={product.product_category} target="_blank">Link</a></dd> */}
+                <dt className="text-black font-bold">Age</dt>
                 <dd>{product.product_ageCategory || "—"}</dd>
-                <dt className="text-muted-foreground">Product ID</dt>
-                <dd>{product.id}</dd>
-                <dt className="text-muted-foreground">Available</dt>
+                {/* <dt className="text-muted-foreground">Product ID</dt>
+                <dd>{product.id}</dd> */}
+                <dt className="text-black font-bold">Available</dt>
                 <dd>{product.product_isAvailable ? "Yes" : "No"}</dd>
               </dl>
             </CardContent>
