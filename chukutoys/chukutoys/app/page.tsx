@@ -1,6 +1,6 @@
 import { Hero } from "@/components/site/hero"
-import { ProductsGrid } from "@/components/site/products-grid"
 import FeatureHighlights from "@/components/site/highlight"
+import { FeaturedCarousel } from "@/components/site/featured-carousel"
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
         <h2 id="featured-heading" className="text-pretty text-2xl font-semibold mb-4 md:text-3xl">
           Featured toys
         </h2>
-        <ProductsGrid featuredOnly limit={4} />
+        <FeaturedCarousel />
       </section>
     </main>
   )
