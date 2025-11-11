@@ -93,7 +93,8 @@ export default function ProductDetailsPage({
   }
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+    <main className="relative mx-auto max-w-5xl px-4 py-10 md:py-14 bg-gradient-to-bl from-blue-100 via-white to-pink-200">
+      <img src="/bg-image2.png" className="absolute bottom-0 right-0 w-60 h-60 animate-spin-slow opacity-80 hidden lg:inline" />
       <nav className="mb-6 text-sm">
         <Link href="/products" className="text-primary hover:underline">
           ← Back to products
