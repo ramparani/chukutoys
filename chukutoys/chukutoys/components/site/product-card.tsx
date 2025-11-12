@@ -3,7 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { formatCurrencyINR } from "@/lib/utils"
 import type { Product } from "@/lib/products"
-// import { AddToCartBtn } from "@/components/site/add-to-cart-btn"
+import { AddToCartBtn } from "@/components/site/add-to-cart-btn"
+import { Button } from "../ui/button"
 
 export function  ProductCard({ product }: { product: Product }) {
   const cover = (product.product_images && product.product_images[0] && product.product_images[0].url)
@@ -12,14 +13,20 @@ export function  ProductCard({ product }: { product: Product }) {
     <Card className="h-full">
       <CardHeader>
         <CardTitle className="text-pretty text-base md:text-lg">
-          <Link href={`/products/${product.id}`} className="hover:underline">
+          <Link 
+            href={`/products/${product.id}`} 
+            className="hover:underline block h-14 px-3 py-2 text-black rounded overflow-hidden text-ellipsis text-center"
+          >
             {product.product_name}
           </Link>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative mb-3 aspect-square overflow-hidden rounded-md border border-border bg-muted">
-          <Link href={`/products/${product.id}`} aria-label={`View details for ${product.product_name}`}>
+          <Link 
+            href={`/products/${product.id}`} 
+            aria-label={`View details for ${product.product_name}`} 
+          >
             <Image
               src={`${cover}` || "/placeholder.svg"}
               alt={`${product.product_name} product image`}
@@ -33,7 +40,13 @@ export function  ProductCard({ product }: { product: Product }) {
       </CardContent>
       <CardFooter className="flex flex-col gap-3">
         <span className="font-semibold">{formatCurrencyINR(product.product_price)}</span>
-        {/* <AddToCartBtn product={product} /> */}
+        {product.product_isAvailable ? (
+            <AddToCartBtn product={product} />
+          ) : (
+            <Button disabled className="w-full bg-amber-950 text-white font-bold">
+             Coming soon!
+            </Button>
+          )}
       </CardFooter>
     </Card>
   )
