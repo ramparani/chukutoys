@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { ProductsGrid } from "@/components/site/products-grid"
 
-const AGES = ["all", "Age 0-2 Years", "Age 3-5 Years", "Age 6-8 Years", "Age 9-12 Years", "Adults"] as const
+const AGES = ["all", "Age 0-2 Years", "Age 3-5 Years", "Adults"] as const
 
 export default function ProductsPage() {
   const [age, setAge] = useState<(typeof AGES)[number]>("all")
@@ -23,7 +23,7 @@ export default function ProductsPage() {
                 age === a ? "bg-primary text-primary-foreground" : "bg-card text-foreground border-border"
               }`}
             >
-              {a === "all" ? "All ages" : `${a}`}
+              {a === "all" ? "All ages" : a === "Age 3-5 Years" ? "3+ years" : `${a}`}
             </button>
           ))}
         </div>
