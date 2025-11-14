@@ -53,7 +53,7 @@ export function MediaGallery({ images, videos, name }: MediaGalleryProps) {
           <iframe
             width="100%"
             height="100%"
-            src={currentMedia.src ? `https://www.youtube.com/embed/${currentMedia.src}` : "https://www.youtube.com/embed/VLL7-jOU7ok"}
+            src={currentMedia.src ? `https://www.youtube.com/embed/${currentMedia.src}` : "https://www.youtube.com/embed/ufeL1b0QAnk"}
             title={`${name} video ${selectedIndex + 1}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
