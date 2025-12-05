@@ -10,6 +10,7 @@ import { Header } from "@/components/site/header"
 import { Footer } from "@/components/site/footer"
 import { Suspense } from "react"
 import OfferBanner from "@/components/site/offer-banner"
+import { WhatsAppButton } from "@/components/site/whatsapp-button"
 
 export const metadata: Metadata = {
   title: "ChuKuToys — Play. Learn. Smile.",
@@ -62,6 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} kids-bg`}>
+        <WhatsAppButton />
         <Suspense fallback={<div>Loading...</div>}>
           <OfferBanner />
           <Header />
