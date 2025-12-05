@@ -109,7 +109,7 @@ export default function ProductDetailsPage({
 
         <div>
           <h1 className="text-pretty text-3xl font-semibold md:text-4xl">{product.product_name}</h1>
-          <p className="mt-2 text-lg font-medium text-primary">{formatCurrencyINR(product.product_price)}</p>
+          <p className="mt-2 text-lg font-medium text-primary">₹ {formatCurrencyINR(product.product_price)}</p>
           <p className="mt-4 text-black">{product.product_description}</p>
 
           <Card className="mt-6">
