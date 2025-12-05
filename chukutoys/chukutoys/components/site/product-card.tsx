@@ -39,7 +39,7 @@ export function  ProductCard({ product }: { product: Product }) {
         <p className="text-sm text-muted-foreground line-clamp-2">{product.product_description}</p>
       </CardContent>
       <CardFooter className="flex flex-col gap-3">
-        <span className="font-semibold">{formatCurrencyINR(product.product_price)}</span>
+        <span className="font-semibold">₹ {formatCurrencyINR(product.product_price)}</span>
         {product.product_isAvailable ? (
             <AddToCartBtn product={product} />
           ) : (
