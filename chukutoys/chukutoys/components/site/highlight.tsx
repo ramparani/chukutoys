@@ -18,7 +18,7 @@ const features = [
   {
     icon: <PhoneCall className="text-white text-3xl" />,
     title: 'Give Us A Call',
-    description: 'Or Whatsapp on - 8447496162',
+    description: 'Or Whatsapp on - 9944530200',
   },
   {
     icon: <MailCheck className="text-white text-3xl" />,
