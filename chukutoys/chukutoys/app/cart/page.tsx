@@ -122,7 +122,7 @@ export default function CartPage() {
                 Almost done! Just download your invoice and share it with us at below number. We'll handle the rest and get your order ready.
               </p>
               <div className="bg-blue-50 rounded-lg p-4 text-center">
-                <p className="font-semibold text-lg">+91-84474-96162</p>
+                <p className="font-semibold text-lg">+91-99445-30200</p>
               </div>
               <Button onClick={() => setShowInvoiceModal(false)} className="w-full">
                 Got it, Continue
