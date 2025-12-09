@@ -42,7 +42,7 @@ export function WhatsAppButton() {
 
   if (!mounted) return null
 
-  const phoneNumber = "8447496162"
+  const phoneNumber = "9944530200"
   const message = "Hello! I would like to know more about your products."
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
