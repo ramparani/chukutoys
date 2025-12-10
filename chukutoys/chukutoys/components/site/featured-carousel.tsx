@@ -7,7 +7,11 @@ import { ProductCard } from "./product-card"
 import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 
-const fetcher = (url: string) => fetch(url, { cache: "no-store" }).then((r) => r.json())
+// Cache for 60 minutes (3600 seconds)
+const fetcher = (url: string) =>
+  fetch(url, {
+    next: { revalidate: 3600 }, // ISR-style caching
+  }).then((r) => r.json());
 
 export function FeaturedCarousel() {
   const params = new URLSearchParams()
