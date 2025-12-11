@@ -3,7 +3,7 @@ import { cookies } from "next/headers"
 
 export async function GET() {
   const authorized = cookies().get("admin_auth")?.value === "ok"
-  return NextResponse.json({ authorized }, { headers: { "Cache-Control": "no-store" } })
+  return NextResponse.json({ authorized }, { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=59" } })
 }
 
 export async function POST(req: Request) {
