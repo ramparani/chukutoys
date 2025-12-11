@@ -4,7 +4,10 @@ import useSWR from "swr"
 import type { Product } from "@/lib/products"
 import { ProductCard } from "./product-card"
 
-const fetcher = (url: string) => fetch(url, { cache: "no-store" }).then((r) => r.json())
+const fetcher = (url: string) =>
+  fetch(url, {
+    next: { revalidate: 3600 }, // cache for 1 hour
+  }).then((r) => r.json());
 
 export function ProductsGrid({
   limit,
