@@ -21,7 +21,11 @@ type Product = {
 }
 
 const fetcher = async (url: string) => {
-  const res = await fetch(url, { credentials: "include", cache: "no-store" })
+  const res = await fetch(url, {
+    credentials: "include",
+    next: { revalidate: 3600 }, // cache for 1 hour
+  });
+  
   if (!res.ok) throw new Error(await res.text())
   return res.json()
 }
