@@ -8,7 +8,10 @@ import { ProductGallery } from "@/components/site/product-gallery"
 import { formatCurrencyINR } from "@/lib/utils"
 
 const fetcher = async (url: string) => {
-  const res = await fetch(url, { cache: "no-store" })
+  const res = await fetch(url, {
+    next: { revalidate: 3600 }, // cache for 1 hour
+  });
+  
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
     const message = err?.error || `Request failed: ${res.status}`
