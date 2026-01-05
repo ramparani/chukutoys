@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
         <main>
       <Hero />
-      <section className="relative z-10 -mt-8 md:-mt-12">
+      <section className="relative z-10 mt-8 md:mt-12">
         <StatusFilter />
       </section>
       <CategoryFilter />
