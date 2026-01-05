@@ -54,7 +54,7 @@ export function Hero() {
   }, [nextSlide])
 
   return (
-    <section className="relative h-[500px] w-full overflow-hidden md:h-[600px]">
+    <section className="relative h-125 w-full overflow-hidden md:h-175">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
