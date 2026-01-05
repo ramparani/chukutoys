@@ -138,11 +138,12 @@ export function CategoryFilter({
                 >
                   {category.name}
                 </h3>
-                <div className={`relative z-10 ${standalone ? "h-16" : "h-24"} w-full mt-auto`}>
+                <div className={`relative z-10 ${standalone ? "h-16" : "h-48"} w-full mt-auto flex justify-center items-center`}>
                   <Image
                     src={category.image || "/placeholder.svg"}
                     alt={category.name}
-                    fill
+                    height={200}
+                    width={200}
                     className="object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
