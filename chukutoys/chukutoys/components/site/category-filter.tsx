@@ -106,7 +106,7 @@ export function CategoryFilter({
     <section className={`mx-auto max-w-7xl ${standalone ? "p-0" : "px-4 py-12 md:py-16"}`} ref={containerRef}>
       {!standalone && (
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
-          <h2 className="text-4xl md:text-5xl font-black text-[#FF4D4D] tracking-tight">SHOP BY CATEGORY</h2>
+          <h2 className="text-4xl md:text-5xl font-black text-black tracking-tight">SHOP BY CATEGORY</h2>
           <Link
             href="/products"
             className="text-[#FF4D4D] font-bold underline decoration-4 underline-offset-8 hover:text-[#FF4D4D]/80 transition-all text-xl mt-4 md:mt-0"
