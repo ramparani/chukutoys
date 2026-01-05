@@ -1,4 +1,4 @@
-import { Hero } from "@/components/site/hero"
+import { Hero } from "@/components/site/hero_new"
 import FeatureHighlights from "@/components/site/highlight"
 import { FeaturedCarousel } from "@/components/site/featured-carousel"
 import { VideosCarousel } from "@/components/site/videos-carousel"
