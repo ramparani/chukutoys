@@ -157,7 +157,7 @@ export function addProduct(input: {
 
 export async function getProducts() {  
   const productResponse = await callStrapiAPI(
-    `/products?populate=product_images&pagination[page]=1&pagination[pageSize]=100`,
+    `/products?populate=product_images&pagination[page]=1&pagination[pageSize]=200`,
     "Error fetching page",
     "GET"
   );
